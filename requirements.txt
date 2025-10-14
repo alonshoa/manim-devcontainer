@@ -1,0 +1,8 @@
+torch
+torchvision
+manim
+manim-slides
+# manim-voiceover[recorder]
+numpy
+# pillow
+matplotlib

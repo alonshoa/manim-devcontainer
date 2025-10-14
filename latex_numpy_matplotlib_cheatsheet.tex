@@ -1,0 +1,157 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{longtable}
+\usepackage{geometry}
+\usepackage{polyglossia}
+\usepackage{minted} % For syntax highlighting
+
+\geometry{margin=1in}
+
+% Set Hebrew as the main language
+\setdefaultlanguage{hebrew}
+\setotherlanguage{english}
+
+\usepackage{fontspec}
+\newfontfamily\hebrewfont[Script=Hebrew]{David CLM} % Replace with another Hebrew font if needed
+\newfontfamily\englishfont[Script=Latin]{Courier New} % For English code snippets
+
+\begin{document}
+
+\section*{פונציות שימושיות ב- NumPy}
+
+\begin{longtable}{|p{0.2\textwidth}|p{0.4\textwidth}|p{0.35\textwidth}|}
+\hline
+\textbf{קטגוריה} & \textbf{פונקציונליות} & \textbf{תיאור} \\
+\hline
+\endfirsthead
+\hline
+\textbf{קטגוריה} & \textbf{פונקציונליות} & \textbf{תיאור} \\
+\hline
+\endhead
+\hline
+\endfoot
+
+\hline
+\endlastfoot
+
+\textbf{מתמטיקה} & \textenglish{\texttt{np.add(x, y)}} & חיבור איברים של המערכים \textenglish{\texttt{x}} ו-\textenglish{\texttt{y}} \\
+                 & \textenglish{\texttt{np.subtract(x, y)}} & חיסור איברים של המערכים \textenglish{\texttt{x}} ו-\textenglish{\texttt{y}} \\
+                 & \textenglish{\texttt{np.multiply(x, y)}} & כפל איברים של המערכים \textenglish{\texttt{x}} ו-\textenglish{\texttt{y}} \\
+                 & \textenglish{\texttt{np.divide(x, y)}} & חילוק איברים של המערכים \textenglish{\texttt{x}} ו-\textenglish{\texttt{y}} \\
+                 & \textenglish{\texttt{np.power(x, y)}} & העלאת האיברים של \textenglish{\texttt{x}} בחזקה של \textenglish{\texttt{y}} \\
+                 & \textenglish{\texttt{np.sqrt(x)}} & חישוב שורש ריבועי לכל איבר במערך \textenglish{\texttt{x}} \\
+                 & \textenglish{\texttt{np.log(x)}} & לוגריתם טבעי (בסיס \textenglish{\texttt{e}}) של מערך \textenglish{\texttt{x}} \\
+                 & \textenglish{\texttt{np.exp(x)}} & חזקה (אקספוננט) של כל איברי \textenglish{\texttt{x}} \\
+                 & \textenglish{\texttt{np.sum(x, axis=...)}} & סכום המערך \textenglish{\texttt{x}} לאורך ציר מסוים \\
+                 & \textenglish{\texttt{np.mean(x, axis=...)}} & ממוצע המערך \textenglish{\texttt{x}} לאורך ציר מסוים \\
+
+\hline
+
+\textbf{מטריצות (טנזורים)} & \textenglish{\texttt{np.dot(a, b)}} & כפל מטריצות של \textenglish{\texttt{a}} ו-\textenglish{\texttt{b}} \\
+                            & \textenglish{\texttt{np.matmul(a, b)}} & כפל מטריצות עם תמיכה בממדים גבוהים \\
+                            & \textenglish{\texttt{np.linalg.inv(a)}} & חישוב מטריצה הופכית של מטריצה ריבועית \textenglish{\texttt{a}} \\
+                            & \textenglish{\texttt{np.linalg.det(a)}} & חישוב הדטרמיננטה של מטריצה ריבועית \textenglish{\texttt{a}} \\
+                            & \textenglish{\texttt{np.transpose(a)}} & טרנספוזיציה של המטריצה \textenglish{\texttt{a}} \\
+                            & \textenglish{\texttt{np.diag(a)}} & יצירת מטריצה אלכסונית או חילוץ האלכסון מ-\textenglish{\texttt{a}} \\
+                            & \textenglish{\texttt{np.linalg.eig(a)}} & חישוב ערכים עצמיים ווקטורים עצמיים של מטריצה \textenglish{\texttt{a}} \\
+                            & \textenglish{\texttt{np.linalg.norm(a)}} & חישוב הנורמה של המטריצה \textenglish{\texttt{a}} \\
+                            & \textenglish{\texttt{np.trace(a)}} & סכום האיברים באלכסון של \textenglish{\texttt{a}} \\
+
+\hline
+
+\textbf{יצירת מערכים} & \textenglish{\texttt{np.array([elements])}} & יצירת מערך \textenglish{NumPy} מרשימה ב-\textenglish{Python} \\
+                      & \textenglish{\texttt{np.zeros(shape)}} & יצירת מערך מלא באפסים עם צורה מסוימת \\
+                      & \textenglish{\texttt{np.ones(shape)}} & יצירת מערך מלא באחדים עם צורה מסוימת \\
+                      & \textenglish{\texttt{np.eye(n)}} & יצירת מטריצה יחידה בגודל \textenglish{\texttt{n}} \\
+                      & \textenglish{\texttt{np.arange(start, stop, step)}} & יצירת מערך עם ערכים בטווח מסוים בצעדים קבועים \\
+                      & \textenglish{\texttt{np.linspace(start, stop, num)}} & יצירת מערך עם \textenglish{\texttt{num}} ערכים מחולקים באופן שווה בטווח \textenglish{\texttt{start}} עד \textenglish{\texttt{stop}} \\
+                      & \textenglish{\texttt{np.reshape(a, newshape)}} & שינוי הצורה של מערך \textenglish{\texttt{a}} לצורה חדשה מבלי לשנות את המידע \\
+                      & \textenglish{\texttt{np.concatenate((a1, a2), axis=...)}} & איחוד מערכים לאורך ציר נתון \\
+
+\hline
+
+\textbf{מספרים רנדומליים} & \textenglish{\texttt{np.random.rand(d0, d1, ...)}} & יצירת מספרים רנדומליים בהתפלגות אחידה בטווח \textenglish{$[0, 1)$} \\
+                          & \textenglish{\texttt{np.random.randn(d0, d1, ...)}} & יצירת מספרים רנדומליים בהתפלגות נורמלית סטנדרטית \\
+                          & \textenglish{\texttt{np.random.randint(low, high, size)}} & יצירת מספרים שלמים רנדומליים בטווח \textenglish{\texttt{low}} עד \textenglish{\texttt{high}} \\
+                          & \textenglish{\texttt{np.random.seed(seed)}} & קביעת זרעים להתפלגות רנדומלית עבור שחזור תוצאות \\
+                          & \textenglish{\texttt{np.random.choice(a, size, replace)}} & דגימה רנדומלית מתוך מערך \textenglish{\texttt{a}} עם או בלי חזרה \\
+                          & \textenglish{\texttt{np.random.uniform(low, high, size)}} & יצירת מספרים רנדומליים בהתפלגות אחידה בטווח \textenglish{\texttt{[low, high)}} \\
+
+\hline
+\textbf{אופרטורים} & \textenglish{\texttt{a @ b}} & כפל מטריצות בין \textenglish{\texttt{a}} ו-\textenglish{\texttt{b}} (שקול ל-\textenglish{\texttt{np.matmul(a, b)}}) \\
+                  & \textenglish{\texttt{a * b}} & כפל איברים (element-wise) בין \textenglish{\texttt{a}} ו-\textenglish{\texttt{b}} \\
+                  & \textenglish{\texttt{a + b}} & חיבור איברים (element-wise) בין \textenglish{\texttt{a}} ו-\textenglish{\texttt{b}} \\
+                  & \textenglish{\texttt{a - b}} & חיסור איברים (element-wise) בין \textenglish{\texttt{a}} ו-\textenglish{\texttt{b}} \\
+                  & \textenglish{\texttt{a / b}} & חילוק איברים (element-wise) בין \textenglish{\texttt{a}} ו-\textenglish{\texttt{b}} \\
+                  & \textenglish{\texttt{a ** b}} & העלאת כל איבר של \textenglish{\texttt{a}} בחזקה של האיבר המקביל ב-\textenglish{\texttt{b}} \\
+                  & \textenglish{\texttt{-a}} & היפוך סימן של כל איבר במערך \textenglish{\texttt{a}} \\
+                  & \textenglish{\texttt{a > b}} & החזרת מערך של אמת/שקר בהתאם להשוואה איבר-איבר אם \textenglish{\texttt{a > b}} \\
+
+
+
+\end{longtable}
+
+\section*{צ'יט שיט של Matplotlib}
+
+\begin{longtable}{|p{0.2\textwidth}|p{0.3\textwidth}|p{0.4\textwidth}|}
+\hline
+\textbf{פונקציונליות} & \textbf{תיאור} & \textbf{דוגמת קוד} \\
+\hline
+\endfirsthead
+\hline
+\textbf{פונקציונליות} & \textbf{תיאור} & \textbf{דוגמת קוד} \\
+\hline
+\endhead
+\hline
+\endfoot
+
+\hline
+\endlastfoot
+
+\textenglish{\texttt{plt.plot(x, y)}} & יצירת גרף קו רגיל של \textenglish{\texttt{y}} לעומת \textenglish{\texttt{x}} & 
+\begin{minted}[fontsize=\small, bgcolor=lightgray]{python}
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+plt.plot(x, y)
+plt.title('גרף סינוס')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.show()
+\end{minted} \\
+
+\hline
+
+\textenglish{\texttt{plt.hist(data, bins)}} & יצירת היסטוגרמה של נתונים עם מספר עמודות & 
+\begin{minted}[fontsize=\small, bgcolor=lightgray]{python}
+import matplotlib.pyplot as plt
+import numpy as np
+
+data = np.random.randn(1000)
+
+plt.hist(data, bins=30, color='blue', alpha=0.7)
+plt.title('היסטוגרמה')
+plt.xlabel('ערך')
+plt.ylabel('תדירות')
+plt.show()
+\end{minted} \\
+
+\hline
+
+\textenglish{\texttt{plt.imshow(image)}} & הצגת תמונה או מטריצה דו-ממדית & 
+\begin{minted}[fontsize=\small, bgcolor=lightgray]{python}
+import matplotlib.pyplot as plt
+import numpy as np
+
+image = np.random.rand(10, 10)
+
+plt.imshow(image, cmap='viridis')
+plt.colorbar()
+plt.title('תמונה רנדומלית')
+plt.show()
+\end{minted} \\
+
+\end{longtable}
+\end{document}
