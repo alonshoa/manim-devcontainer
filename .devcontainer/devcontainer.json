@@ -4,7 +4,17 @@
 		"dockerfile": "Dockerfile",
 		"context": ".."
 	},
-
+	// "runArgs": [
+	// 	"--gpus=all",
+	// 	"-e NVIDIA_VISIBLE_DEVICES=all",
+	// 	"-e NVIDIA_DRIVER_CAPABILITIES=all",
+	// 	"--device=/dev/dri",
+	// 	"--env=DISPLAY=${env:DISPLAY}",
+	// 	"--volume=/tmp/.X11-unix:/tmp/.X11-unix"
+	//   ],
+	//   "mounts": [
+	// 	"source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind"
+	//   ],
 	"customizations": {
 		"vscode": {
 			"settings": { 
@@ -25,3 +35,5 @@
 		"git": "latest"
 	}
 }
+
+  
