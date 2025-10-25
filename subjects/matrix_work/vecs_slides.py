@@ -173,9 +173,11 @@ class TwoEqToMatrixSlides(Slide):
         Axb = MathTex(r"A\vec{x}=\vec{b}").scale(1.1).set_color_by_tex(r"A", BLUE).set_color_by_tex(r"\vec{x}", GREEN).set_color_by_tex(r"\vec{b}", YELLOW)
 
         line1 = VGroup(A, x, b).arrange(RIGHT, buff=0.8).to_edge(UP, buff=0.6)
-        self.play(Transform(system.copy(), line1))  # fun morph
+        self.play(FadeIn(system, line1))  # fun morph
+        self.next_slide()  # [Slide 6] System + A,x,b
         self.play(Write(Axb.next_to(line1, DOWN, buff=0.4)))
         self.next_slide()  # [Slide 7] A x = b
+        self.wipe(system)
         # Column view: x * col1(A) + y * col2(A) = b
         col_combo = MathTex(
             r"x\begin{pmatrix}2\\-1\end{pmatrix}"
@@ -185,11 +187,11 @@ class TwoEqToMatrixSlides(Slide):
             r"\begin{pmatrix}5\\1\end{pmatrix}"
         ).scale(1.0).next_to(Axb, DOWN, buff=0.4)
         self.play(Write(col_combo))
-        note = Text("פרשנות: שילוב לינארי של עמודות A נותן את \\(\\vec{b}\\)", font="DejaVu Sans").scale(0.45)
-        note.next_to(col_combo, DOWN, buff=0.25)
-        self.play(FadeIn(note))
+        # note = Text("פרשנות: שילוב לינארי של עמודות A נותן את \\(\\vec{b}\\)", font="DejaVu Sans").scale(0.45)
+        # note.next_to(col_combo, DOWN, buff=0.25)
+        # self.play(FadeIn(note))
         self.next_slide()  # [Slide 8] Column-combination interpretation
-        self.wipe(Axb, col_combo, note)
+        self.wipe(Axb, col_combo)
 
         # ---------- 4) Augmented matrix & row operations ----------
         aug0 = MathTex(r"\left(\begin{array}{cc|c} 2 & 1 & 5 \\ -1 & 3 & 1 \end{array}\right)").scale(1.0)
@@ -252,11 +254,11 @@ class TwoEqToMatrixSlides(Slide):
         # self.play(Create(final_box))
         # self.next_slide()  # [Slide 14] Final
 
-        why = VGroup(
-            Text("למה מטריצות?", font="DejaVu Sans").scale(0.6).set_color(BLUE),
-            Text("• ניסוח אחיד למערכות\n• פעולות אלגוריתמיות \n• הכללה למימדים גבוהים", font="DejaVu Sans").scale(0.45)
-        ).arrange(DOWN, aligned_edge=RIGHT, buff=0.25).scale(1.2).to_edge(ORIGIN, buff=0.6)
-        self.play(FadeIn(why))
+        # why = VGroup(
+        #     Text("למה מטריצות?", font="DejaVu Sans").scale(0.6).set_color(BLUE),
+        #     Text("• ניסוח אחיד למערכות\n• פעולות אלגוריתמיות \n• הכללה למימדים גבוהים", font="DejaVu Sans").scale(0.45)
+        # ).arrange(DOWN, aligned_edge=RIGHT, buff=0.25).scale(1.2).to_edge(ORIGIN, buff=0.6)
+        # self.play(FadeIn(why))
         self.next_slide(loop=True)  # [Slide 15] Loop while you talk
         # self.play(Indicate(final_box), run_time=1.2)
         # advance to end
